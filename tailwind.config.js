@@ -11,7 +11,7 @@ module.exports = {
 
     theme: {
         colors: {
-            'torre-black': '#010101',
+            'torre-black': '#272a2d',
             'torre-green': '#c4d23a',
             'torre-white': '#ffffffe6',
         },

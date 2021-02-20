@@ -24,3 +24,5 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/{user_slug}', 'App\Http\Controllers\UsersController@show');
