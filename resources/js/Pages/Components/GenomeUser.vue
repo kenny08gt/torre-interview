@@ -2,7 +2,7 @@
     <Genome>
         <div v-if="data">
             <img class="profile-picture" :src="data.person.picture" alt="">
-            <h1 class="mt-4 text-center font-medium">{{ data.person.name }}</h1>
+            <h1 class="mt-4 text-center font-bold">{{ data.person.name }}</h1>
         </div>
     </Genome>
 </template>
@@ -30,6 +30,9 @@
 }
 .genome-wrapper {
     width: 250px;
+}
+h1 {
+    font-size: 1.17em;
 }
 </style>
 <script>

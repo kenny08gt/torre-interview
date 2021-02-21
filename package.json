@@ -30,5 +30,8 @@
         "vue-loader": "^16.1.2",
         "vue-style-loader": "^4.1.2",
         "webpack": "^5.23.0"
+    },
+    "dependencies": {
+        "vue3-perfect-scrollbar": "^1.5.5"
     }
 }

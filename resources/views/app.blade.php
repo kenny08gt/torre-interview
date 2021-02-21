@@ -8,8 +8,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;900&family=Ovo&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
@@ -20,7 +20,7 @@
             --size: 120px;
             --font-size: 75px;
             --border-width: 4px;
-            --torre-black: #010101;
+            --torre-black: #272a2d;
             --torre-green: #c4d23a;
             --torre-white: #ffffffe6;
         }
