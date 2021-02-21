@@ -28,6 +28,22 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans antialiased">
+<nav class="flex flex-wrap items-center justify-between bg-torre-black text-torre-white sticky z-10 top-0">
+    <!-- logo -->
+    <!-- hamburger -->
+    <!-- links -->
+    <!-- cta -->
+    <div class="w-screen mt-3"></div>
+    <div class="mb-2 sm:mb-0">
+        <a href="/home" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark">Home</a>
+    </div>
+    <div>
+        <a href="/one" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">One</a>
+        <a href="/two" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Two</a>
+        <a href="/three" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Three</a>
+    </div>
+    <hr class="w-screen mt-3">
+</nav>
 @inertia
 </body>
 </html>

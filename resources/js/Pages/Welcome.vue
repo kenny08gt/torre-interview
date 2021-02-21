@@ -1,7 +1,7 @@
 <template>
     <div
-        class="grid grid-cols-3 relative flex items-top justify-center min-h-screen bg-torre-black text-torre-white  sm:items-center sm:pt-0">
-        <div class="left">
+        class="grid grid-cols-3 relative flex items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 background-image">
+        <div class="left" style="max-width: 280px; margin-left: auto; margin-right: 80px;">
             <div class="professional-headline">
                 <h2 class="m-2 font-bold">Jobs</h2>
                 <perfect-scrollbar>
@@ -49,8 +49,15 @@
     object-fit: cover;
 }
 
+.background-image {
+    background-image: url(/imgs/bk.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: calc(100vh - 57px);
+}
+
 .ps {
-    height: 90vh;
+    height: 80vh;
 }
 
 .job-logo img {
