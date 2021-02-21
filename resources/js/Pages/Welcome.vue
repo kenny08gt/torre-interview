@@ -38,6 +38,8 @@
 
         </div>
     </div>
+
+<!--    <BackgroundProfile :user="user"></BackgroundProfile>-->
 </template>
 
 <style scoped>
@@ -96,6 +98,7 @@ import ElementListing from '@/Pages/Components/ElementListing'
 import GenomeUser from '@/Pages/Components/GenomeUser'
 import GenomeMain from '@/Pages/Components/GenomeMain'
 import Genome from '@/Pages/Components/Genome'
+import BackgroundProfile from '@/Pages/Components/BackgroundProfile'
 import {PerfectScrollbar} from 'vue3-perfect-scrollbar'
 
 export default {
@@ -104,6 +107,7 @@ export default {
         GenomeMain,
         Genome,
         ElementListing,
+        BackgroundProfile,
         PerfectScrollbar
     },
     props: {
