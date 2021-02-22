@@ -17,9 +17,10 @@ class VisitsMiddleware
     public function handle(Request $request, Closure $next)
     {
         $visitor = request()->ip();
+        $user_agent = request()->userAgent();
         $time = now();
 
-        file_put_contents(public_path('/visits.txt'), $visitor.'-'.$time->format('F j, Y, g:i a'). PHP_EOL, FILE_APPEND);
+        file_put_contents(public_path('/visits.txt'), $visitor.'-'.$user_agent.'-'.$time->format('F j, Y, g:i a'). PHP_EOL, FILE_APPEND);
         return $next($request);
     }
 }
