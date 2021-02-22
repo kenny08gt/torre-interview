@@ -1,6 +1,6 @@
 <template>
     <div
-        class="grid grid-cols-3 relative flex items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 background-image">
+        class="grid grid-cols-3 relative flex items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 h-screen">
         <div class="left" style="max-width: 280px; margin-left: auto; margin-right: 80px;">
             <div class="professional-headline">
                 <h2 class="m-2 font-bold">Jobs</h2>
@@ -25,7 +25,7 @@
             <GenomeMain class="genome-main " :height="400">
                 <div class="z-10 user-wrapper">
                     <GenomeUser :data="user"/>
-                    <p class="w-2 cursor-default">{{ user.person.summaryOfBio }}</p>
+                    <p class="pt-5 w-2 cursor-default">{{ user.person.summaryOfBio }}</p>
                     <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank">...more</a>
                 </div>
 
@@ -53,7 +53,7 @@
     background-image: url(/imgs/bk.jpg);
     background-size: cover;
     background-position: center center;
-    height: calc(100vh - 57px);
+    height: calc(100vh - 54px);
 }
 
 .ps {
@@ -95,7 +95,7 @@
 .user-wrapper p {
     overflow: hidden;
     width: 250px;
-    height: 143px;
+    max-height: 140px;
     margin-top: 50px;
 }
 </style>

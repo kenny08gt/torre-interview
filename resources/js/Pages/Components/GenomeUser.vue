@@ -2,7 +2,15 @@
     <Genome>
         <div v-if="data">
             <img class="profile-picture" :src="data.person.picture" alt="">
-            <h1 class="mt-4 text-center font-bold">{{ data.person.name }}</h1>
+            <ul class="flex w-max text-center mx-auto mt-2">
+                <li v-for="link in data.person.links">
+                    <a :href="link.address" class="mx-2 social-link">
+                        <i :class="'fab fa-' + link.name "></i>
+<!--                        <font-awesome-icon :icon="link.name" />-->
+                    </a>
+                </li>
+            </ul>
+            <h1 class="mt-1 pb-3 text-center font-bold">{{ data.person.name }}</h1>
         </div>
     </Genome>
 </template>
@@ -33,6 +41,13 @@
 }
 h1 {
     font-size: 1.17em;
+}
+.social-link svg {
+    transition: all ease-in-out 0.2s;
+}
+
+.social-link:hover svg{
+    transform: scale(1.1);
 }
 </style>
 <script>
