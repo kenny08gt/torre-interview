@@ -20,8 +20,10 @@
             </div>
         </div>
         <div class="right">
+            <perfect-scrollbar>
             <Personality :user="user" class="torre-shadow"/>
             <Compare :user="user" class="torre-shadow mt-2"/>
+            </perfect-scrollbar>
         </div>
     </div>
 
@@ -38,7 +40,9 @@
     background-position: center center;
     height: calc(100vh - 54px);
 }
-
+.ps {
+    height: 80vh;
+}
 </style>
 <style scoped>
 
@@ -67,6 +71,7 @@ import Genome from '@/Pages/Components/Genome'
 import WorkExperience from "@/Pages/Components/WorkExperience";
 import Personality from "@/Pages/Components/Personality";
 import Compare from "@/Pages/Components/Compare";
+import {PerfectScrollbar} from 'vue3-perfect-scrollbar'
 
 export default {
     components: {
@@ -75,7 +80,8 @@ export default {
         GenomeUser,
         GenomeMain,
         Genome,
-        Compare
+        Compare,
+        PerfectScrollbar
     },
     props: {
         user: Object

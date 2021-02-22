@@ -15,7 +15,9 @@
             :options="chartOptions"
             :series="series"
         ></apexchart>
-        <small>Tip💡: These is only for entertainment purposes. Don't take it too seriously 😁</small>
+        <div class="mx-4">
+            <small >Tip💡: These is only for entertainment purposes. Don't take it too seriously 😁</small>
+        </div>
     </div>
 </template>
 

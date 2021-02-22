@@ -1,5 +1,5 @@
 <template>
-    <div class="torre-shadow">
+    <div class="torre-shadow  pt-4">
         <h2 class="ml-4">Personality traits</h2>
         <apexchart
             class="text-torre-black"
@@ -10,7 +10,7 @@
             :series="series"
         ></apexchart>
         <br>
-        <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank" class="ml-4 text-sm hover:underline">More statistics</a>
+        <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank" class="ml-4 text-sm hover:underline">+ More statistics</a>
     </div>
 </template>
 <script>

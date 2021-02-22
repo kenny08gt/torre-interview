@@ -54,7 +54,7 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="font-sans antialiased">
-<nav class="flex flex-wrap items-center justify-between bg-torre-black text-torre-white sticky z-10 top-0">
+<nav class="flex flex-wrap items-center justify-between bg-torre-black text-torre-white sticky z-10 top-0 overflow-hidden">
     <!-- logo -->
     <!-- hamburger -->
     <!-- links -->
