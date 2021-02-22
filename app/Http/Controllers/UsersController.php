@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -10,18 +11,27 @@ use Inertia\Inertia;
 class UsersController extends Controller
 {
     public function show(Request $request, $user_slug) {
-        if(Cache::has($user_slug)){
-            //TODO: get a webhook of user profile updated to clean and get new data
-            $user = Cache::get($user_slug);
-        } else {
-            $user = Http::get('https://bio.torre.co/api/bios/'.$user_slug)->throw()->json();
-            Cache::put($user_slug, $user);
-        }
+        $user = User::get($user_slug);
         return Inertia::render('Welcome')->with('user', $user);
     }
 
-    public function get(Request $request)
-    {
 
+    public function getTraitsProcessed($user_slug)
+    {
+        $user = User::get($user_slug);
+
+        $traits = [];
+        foreach( $user['personalityTraitsResults']['groups'] as $group) {
+            $traits[$group['id']] = [
+                'median' => $group['median']
+            ];
+        }
+
+        foreach( $user['personalityTraitsResults']['analyses'] as $analysis) {
+            $traits[$analysis['groupId']]['value'] = $analysis['analysis'];
+            $traits[$analysis['groupId']]['label'] = lcfirst(str_replace('-', ' ', $analysis['groupId']));
+        }
+
+        return response(['traits' => $traits], 200);
     }
 }

@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="right">
-
+            <Personality :user="user"/>
         </div>
     </div>
 
@@ -58,9 +58,11 @@ import GenomeUser from '@/Pages/Components/GenomeUser'
 import GenomeMain from '@/Pages/Components/GenomeMain'
 import Genome from '@/Pages/Components/Genome'
 import WorkExperience from "@/Pages/Components/WorkExperience";
+import Personality from "@/Pages/Components/Personality";
 
 export default {
     components: {
+        Personality,
         WorkExperience,
         GenomeUser,
         GenomeMain,

@@ -26,3 +26,4 @@ Route::get('/', function () {
 });
 
 Route::get('/{user_slug}', 'App\Http\Controllers\UsersController@show');
+Route::get('traits/{user_slug}', 'App\Http\Controllers\UsersController@getTraitsProcessed')->name('users.traits');
