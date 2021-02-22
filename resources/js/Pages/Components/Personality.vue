@@ -36,7 +36,7 @@ export default {
 
             this.series = [
                 {
-                    name:'Me',
+                    name: this.user.person.name,
                     data: serie_me,
                 },
                 {

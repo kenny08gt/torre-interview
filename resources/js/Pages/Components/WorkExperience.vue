@@ -89,9 +89,11 @@
 <script>
 import ElementListing from '@/Pages/Components/ElementListing'
 import {PerfectScrollbar} from 'vue3-perfect-scrollbar'
+import Genome from "@/Pages/Components/Genome";
 
 export default {
     components: {
+        Genome,
         PerfectScrollbar,
         ElementListing
     },
