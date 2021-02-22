@@ -33,6 +33,8 @@
         "webpack": "^5.23.0"
     },
     "dependencies": {
+        "apexcharts": "^3.25.0",
+        "vue3-apexcharts": "^1.2.1",
         "vue3-perfect-scrollbar": "^1.5.5"
     }
 }

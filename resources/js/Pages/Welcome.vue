@@ -1,24 +1,9 @@
 <template>
     <div
-        class="grid grid-cols-3 relative flex items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 h-screen">
+        class="grid grid-cols-3 relative flex items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 h-screen background-image">
         <div class="left" style="max-width: 280px; margin-left: auto; margin-right: 80px;">
             <div class="professional-headline">
-                <h2 class="m-2 font-bold">Jobs</h2>
-                <perfect-scrollbar>
-                    <ElementListing v-for="job in user.jobs">
-                        <div class="grid grid-cols-2">
-                            <div class="logo flex justify-center flex-col">
-                                <Genome height="60" class="job-logo">
-                                    <img :src="job.organizations[0].picture" alt="">
-                                </Genome>
-                            </div>
-                            <div class="info font-medium text-sm flex justify-center flex-col">
-                                {{ job.name }} <br>
-                                <strong>{{ job.organizations[0].name }}</strong>
-                            </div>
-                        </div>
-                    </ElementListing>
-                </perfect-scrollbar>
+                <WorkExperience :jobs="user.jobs"/>
             </div>
         </div>
         <div class="middle">
@@ -43,12 +28,6 @@
 </template>
 
 <style scoped>
-.job-logo {
-    height: 60px;
-    width: 60px;
-    object-fit: cover;
-}
-
 .background-image {
     background-image: url(/imgs/bk.jpg);
     background-size: cover;
@@ -56,31 +35,6 @@
     height: calc(100vh - 54px);
 }
 
-.ps {
-    height: 80vh;
-}
-
-.job-logo img {
-    z-index: 1;
-    border: unset;
-    border-radius: 0;
-    width: calc(60px - calc(var(--border-width) * 2));
-    height: calc(60px - calc(var(--border-width) * 2)) !important;
-    transform: translateY(var(--border-width));
-    clip-path: polygon(45% 1.33975%, 46.5798% .60307%, 48.26352% .15192%, 50% 0, 51.73648% .15192%, 53.4202% .60307%, 55% 1.33975%, 89.64102% 21.33975%, 91.06889% 22.33956%, 92.30146% 23.57212%, 93.30127% 25%, 94.03794% 26.5798%, 94.48909% 28.26352%, 94.64102% 30%, 94.64102% 70%, 94.48909% 71.73648%, 94.03794% 73.4202%, 93.30127% 75%, 92.30146% 76.42788%, 91.06889% 77.66044%, 89.64102% 78.66025%, 55% 98.66025%, 53.4202% 99.39693%, 51.73648% 99.84808%, 50% 100%, 48.26352% 99.84808%, 46.5798% 99.39693%, 45% 98.66025%, 10.35898% 78.66025%, 8.93111% 77.66044%, 7.69854% 76.42788%, 6.69873% 75%, 5.96206% 73.4202%, 5.51091% 71.73648%, 5.35898% 70%, 5.35898% 30%, 5.51091% 28.26352%, 5.96206% 26.5798%, 6.69873% 25%, 7.69854% 23.57212%, 8.93111% 22.33956%, 10.35898% 21.33975%);
-    -webkit-clip-path: polygon(45% 1.33975%, 46.5798% .60307%, 48.26352% .15192%, 50% 0, 51.73648% .15192%, 53.4202% .60307%, 55% 1.33975%, 89.64102% 21.33975%, 91.06889% 22.33956%, 92.30146% 23.57212%, 93.30127% 25%, 94.03794% 26.5798%, 94.48909% 28.26352%, 94.64102% 30%, 94.64102% 70%, 94.48909% 71.73648%, 94.03794% 73.4202%, 93.30127% 75%, 92.30146% 76.42788%, 91.06889% 77.66044%, 89.64102% 78.66025%, 55% 98.66025%, 53.4202% 99.39693%, 51.73648% 99.84808%, 50% 100%, 48.26352% 99.84808%, 46.5798% 99.39693%, 45% 98.66025%, 10.35898% 78.66025%, 8.93111% 77.66044%, 7.69854% 76.42788%, 6.69873% 75%, 5.96206% 73.4202%, 5.51091% 71.73648%, 5.35898% 70%, 5.35898% 30%, 5.51091% 28.26352%, 5.96206% 26.5798%, 6.69873% 25%, 7.69854% 23.57212%, 8.93111% 22.33956%, 10.35898% 21.33975%);
-    display: flex;
-    position: relative;
-    margin: auto;
-    border: unset;
-    border-radius: 0;
-    width: calc(60px - calc(var(--border-width) * 2));
-    height: calc(60px - calc(var(--border-width) * 2)) !important;
-    transform: translateY(var(--border-width));
-    background: 0 0 !important;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
 
 .professional-headline {
     max-width: 400px;
@@ -99,23 +53,18 @@
     margin-top: 50px;
 }
 </style>
-<style src="vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css"/>
 <script>
-import ElementListing from '@/Pages/Components/ElementListing'
 import GenomeUser from '@/Pages/Components/GenomeUser'
 import GenomeMain from '@/Pages/Components/GenomeMain'
 import Genome from '@/Pages/Components/Genome'
-import BackgroundProfile from '@/Pages/Components/BackgroundProfile'
-import {PerfectScrollbar} from 'vue3-perfect-scrollbar'
+import WorkExperience from "@/Pages/Components/WorkExperience";
 
 export default {
     components: {
+        WorkExperience,
         GenomeUser,
         GenomeMain,
-        Genome,
-        ElementListing,
-        BackgroundProfile,
-        PerfectScrollbar
+        Genome
     },
     props: {
         user: Object
