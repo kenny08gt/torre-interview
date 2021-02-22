@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
     public function show(Request $request, $user_slug) {
         $user = User::get($user_slug);
-        return Inertia::render('Welcome')->with('user', $user);
+        return Inertia::render('Profile')->with('user', $user);
     }
 
 

@@ -25,6 +25,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/{user_slug}', 'App\Http\Controllers\UsersController@show');
-Route::get('traits/{user_slug}', 'App\Http\Controllers\UsersController@getTraitsProcessed')->name('users.traits');
-Route::get('compare/{user_slug}/{user_slug2}', 'App\Http\Controllers\UsersController@getTraitsCompared')->name('users.compare.traits');
+Route::get('/search', 'App\Http\Controllers\JobsController@search')->name('search');
+Route::get('/traits/{user_slug}', 'App\Http\Controllers\UsersController@getTraitsProcessed')->name('users.traits');
+Route::get('/compare/{user_slug}/{user_slug2}', 'App\Http\Controllers\UsersController@getTraitsCompared')->name('users.compare.traits');
+Route::get('/{user_slug}', 'App\Http\Controllers\UsersController@show')->name('genome');

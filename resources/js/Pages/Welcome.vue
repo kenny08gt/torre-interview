@@ -1,104 +1,85 @@
 <template>
     <div
-        class="grid grid-cols-3 relative flex items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 h-screen background-image">
-        <div class="left" style="max-width: 280px; margin-left: auto; margin-right: 80px;">
-            <div class="professional-headline">
-                <WorkExperience :jobs="user.jobs"/>
-            </div>
-        </div>
-        <div class="middle">
-            <GenomeMain class="genome-main " :height="400">
-                <div class="z-10 user-wrapper">
-                    <GenomeUser :data="user"/>
-                    <p class="pt-5 w-2 cursor-default">{{ user.person.summaryOfBio }}</p>
-                    <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank" class="hover:underline">...more</a>
-                </div>
-
-            </GenomeMain>
-            <div class="professional-headline text-opacity-75 hover:text-opacity-100 mt-3 cursor-default text-center">
-                {{ user.person.professionalHeadline }}
-            </div>
-        </div>
-        <div class="right">
-            <Personality :user="user" class="torre-shadow"/>
-            <Compare :user="user" class="torre-shadow mt-2"/>
-        </div>
+        class=" relative  items-top justify-center bg-torre-black text-torre-white  sm:items-center sm:pt-0 " style="height: calc(100vh - 54px)">
+        <div class="banner"></div>
+       <div class="p-10 torre-shadow rounded bg-torre-black m-auto job-wrapper">
+           <h1>What is your <strong>dream</strong> job?</h1>
+<!--           <h1 d>What is your <strong>fulfilling</strong> job?</h1>-->
+<!--           <h1>What is your <strong>fulfilling</strong> job?</h1>-->
+           <form v-on:submit.prevent="searchJob">
+            <input type="text" class="" id="" name="" v-model="jobSearch" placeholder="Search">
+           </form>
+           <a :href=" route('genome', 'torrenegra')" class="mt-3 hover:underline pt-3">Take a look at the genome</a>
+       </div>
     </div>
 
 <!--    <BackgroundProfile :user="user"></BackgroundProfile>-->
 </template>
 <style>
-.torre-shadow {
-    -webkit-box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
-    box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
-}
-</style>
-<style scoped>
 .background-image {
     background-image: url(/imgs/bk.jpg);
     background-size: cover;
     background-position: center center;
     height: calc(100vh - 54px);
 }
-
-
-.professional-headline {
-    max-width: 400px;
-    margin: 0.75em auto;
+input {
+    background-color: transparent !important;
+    border: none;
+    border-left: 1px solid var(--torre-white);
+    border-bottom: 1px solid var(--torre-white);
+    width: 100%;
+}
+input:focus, input:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border-left: 1px solid var(--torre-green);
+    border-bottom: 1px solid var(--torre-green);
+}
+.banner {
+    background-image: url(https://res.cloudinary.com/torre-technologies-co/image/upload/q_auto,c_fit,w_2000/v1593109931/dev/landing/uqngfnzme7cvvfovw8aw.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 446px;
+}
+.torre-shadow {
+    -webkit-box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
+    box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
 }
 
-.user-wrapper {
-    width: 250px;
-    margin: auto;
+</style>
+<style scoped>
+.job-wrapper {
+    width: 50vw;
+    height: 25vh;
+    z-index: 1;
+    margin-top: -14vh;
 }
 
-.user-wrapper p {
-    overflow: hidden;
-    width: 250px;
-    max-height: 140px;
-    margin-top: 50px;
+.job-wrapper h1 {
+    font-size: 3rem;
 }
 </style>
 <script>
-import GenomeUser from '@/Pages/Components/GenomeUser'
-import GenomeMain from '@/Pages/Components/GenomeMain'
-import Genome from '@/Pages/Components/Genome'
-import WorkExperience from "@/Pages/Components/WorkExperience";
-import Personality from "@/Pages/Components/Personality";
-import Compare from "@/Pages/Components/Compare";
 
 export default {
     components: {
-        Personality,
-        WorkExperience,
-        GenomeUser,
-        GenomeMain,
-        Genome,
-        Compare
     },
     props: {
-        user: Object
     },
     data() {
-        return {}
+        return {
+            jobSearch: '',
+        }
+    },
+    methods: {
+        searchJob() {
+            let url = 'https://torre.co/en/search/people?q=%28skill%2Frole%'+this.jobSearch+'.1%20or%20name%'+this.jobSearch+'%20or%20organization%'+this.jobSearch+'%29'
+            let win = window.open(url, '_blank');
+            win.focus();
+        }
     },
     mounted() {
-        // console.log(this.user);
-        // axios.get(`https://bio.torre.co/api/bios/${this.userSlug}`)
-        //     .then(function (response) {
-        //         // handle success
-        //         console.log(response);
-        //         this.user.profile_pic = response.person.picture;
-        //         this.user.name = response.person.name;
-        //         this.user.country = response.location.country;
-        //     })
-        //     .catch(function (error) {
-        //         // handle error
-        //         console.log(error);
-        //     })
-        //     .then(function () {
-        //         // always executed
-        //     });
+
     }
 }
 </script>

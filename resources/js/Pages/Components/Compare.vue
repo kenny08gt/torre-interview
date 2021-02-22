@@ -2,7 +2,7 @@
     <div class="mt-4">
         <h2 class="ml-4">Compare stats with another user</h2>
 <!--        TODO: this could be calculated automatically with the logged in user-->
-        <p class="text-sm ml-4">Do you wonder were you stand next to another professional?</p>
+        <p class="text-sm ml-4">Do you wonder were do you stand next to another professional?</p>
         <form v-on:submit.prevent="searchUser">
             <input v-model="userSearch"  type="text" class="ml-4" id="" name="" placeholder="Type the username or place the genome url">
         </form>
@@ -15,6 +15,7 @@
             :options="chartOptions"
             :series="series"
         ></apexchart>
+        <small>Tip💡: These is only for entertainment purposes. Don't take it too seriously 😁</small>
     </div>
 </template>
 
@@ -103,8 +104,10 @@ export default {
     methods: {
         searchUser(ev) {
             ev.preventDefault();
-            console.log('search user ****');
-            console.log(this.userSearch);
+            if(this.userSearch.includes('https://torre.co/')) {
+                let user_arr = this.userSearch.split('/')
+                this.userSearch = user_arr[user_arr.length - 1];
+            }
             axios(route('users.compare.traits', {'user_slug': this.userSearch, 'user_slug2': this.user.person.publicId} )).then((data) => {
                 console.log(data);
                 let serie_search = [];
