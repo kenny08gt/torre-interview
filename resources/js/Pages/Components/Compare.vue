@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4">
+    <div class="mt-4 pt-4">
         <h2 class="ml-4">Compare stats with another user</h2>
 <!--        TODO: this could be calculated automatically with the logged in user-->
         <p class="text-sm ml-4">Do you wonder were do you stand next to another professional?</p>

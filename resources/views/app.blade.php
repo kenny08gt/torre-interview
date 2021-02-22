@@ -4,8 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Share your professional opportunities with the networks and contacts you know, get relevant referrals, and chat.">
 
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://torre.co">
+    <meta property="og:title" content="Torre - matching talent with opportunities.">
+    <meta property="og:description" content="Share your professional opportunities with the networks and contacts you know, get relevant referrals, and chat.">
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/torre-media/static/opportunities-opengraph.png">
+    <meta property="og:image:width" content="474">
+    <meta property="og:image:height" content="248">
+
+    <meta name="twitter:title" content="Torre - matching talent with opportunities.">
+    <meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/torre-media/static/opportunities-opengraph.png">
+    <meta name="twitter:card" content="summary_large_image">
     <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon-16x16.png">
+{{--    <link rel="manifest" href="/site.webmanifest">--}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
