@@ -1,6 +1,12 @@
 <template>
-    <div class="torre-shadow">
-        <h2 class="ml-4">Personality traits</h2>
+    <div class="mt-4">
+        <h2 class="ml-4">Compare stats with another user</h2>
+<!--        TODO: this could be calculated automatically with the logged in user-->
+        <p class="text-sm ml-4">Do you wonder were you stand next to another professional?</p>
+        <form v-on:submit.prevent="searchUser">
+            <input v-model="userSearch"  type="text" class="ml-4" id="" name="" placeholder="Type the username or place the genome url">
+        </form>
+        <br>
         <apexchart
             class="text-torre-black"
             width="400"
@@ -9,13 +15,20 @@
             :options="chartOptions"
             :series="series"
         ></apexchart>
-        <br>
-        <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank" class="ml-4 text-sm hover:underline">More statistics</a>
     </div>
 </template>
+
+<style scoped>
+    input {
+        margin-top: 10px;
+        background: transparent;
+        font-size: 12px;
+        width: 90%;
+    }
+</style>
+
 <script>
 import VueApexCharts from "vue3-apexcharts";
-
 export default {
     components: {
         apexchart: VueApexCharts,
@@ -23,39 +36,9 @@ export default {
     props: {
         user: Object
     },
-    mounted() {
-        axios(route('users.traits', this.user.person.publicId)).then((data) => {
-            console.log(data.data.traits);
-            let serie_me = [];
-            let serie_median = [];
-            let labels = [];
-            Object.keys(data.data.traits).forEach((key) => {
-                let trait = data.data.traits[key];
-                serie_me.push(trait.value);
-                serie_median.push(trait.median ? trait.median : 0);
-                labels.push(trait.label);
-            });
-
-            this.series = [
-                {
-                    name: this.user.person.name,
-                    data: serie_me,
-                },
-                {
-                    name:'Median',
-                    data: serie_median,
-                }
-            ];
-
-            this.chartOptions = {
-                xaxis: {
-                    categories: labels
-                }
-            };
-        }).catch((error) => console.log(error))
-    },
     data: function () {
         return {
+            userSearch: '',
             labels: [],
             traits: [],
             chartOptions: {
@@ -116,7 +99,44 @@ export default {
                     },
                 ],
         };
+    },
+    methods: {
+        searchUser(ev) {
+            ev.preventDefault();
+            console.log('search user ****');
+            console.log(this.userSearch);
+            axios(route('users.compare.traits', {'user_slug': this.userSearch, 'user_slug2': this.user.person.publicId} )).then((data) => {
+                console.log(data);
+                let serie_search = [];
+                let serie_me = [];
+                let labels = [];
+                Object.keys(data.data.traits).forEach((key) => {
+                    let trait = data.data.traits[key];
+                    serie_search.push(trait.value[0]);
+                    serie_me.push(trait.value[1]);
+                    labels.push(trait.label);
+                });
+                this.series = [
+                    {
+                        name: this.userSearch,
+                        data: serie_search,
+                    },
+                    {
+                        name: this.user.person.publicId,
+                        data: serie_me,
+                    }
+                ];
+
+                this.chartOptions = {
+                    xaxis: {
+                        categories: labels
+                    }
+                };
+            }).catch((error) => {
+                console.log(error);
+                alert('Something went wrong, please try another user.');
+            })
+        }
     }
-    ,
 }
 </script>

@@ -11,22 +11,28 @@
                 <div class="z-10 user-wrapper">
                     <GenomeUser :data="user"/>
                     <p class="pt-5 w-2 cursor-default">{{ user.person.summaryOfBio }}</p>
-                    <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank">...more</a>
+                    <a :href="'https://torre.co/en/' + user.person.publicId" target="_blank" class="hover:underline">...more</a>
                 </div>
 
             </GenomeMain>
-            <div class="professional-headline text-opacity-75 hover:text-opacity-100 mt-3 cursor-default">
+            <div class="professional-headline text-opacity-75 hover:text-opacity-100 mt-3 cursor-default text-center">
                 {{ user.person.professionalHeadline }}
             </div>
         </div>
         <div class="right">
-            <Personality :user="user"/>
+            <Personality :user="user" class="torre-shadow"/>
+            <Compare :user="user" class="torre-shadow mt-2"/>
         </div>
     </div>
 
 <!--    <BackgroundProfile :user="user"></BackgroundProfile>-->
 </template>
-
+<style>
+.torre-shadow {
+    -webkit-box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
+    box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
+}
+</style>
 <style scoped>
 .background-image {
     background-image: url(/imgs/bk.jpg);
@@ -59,6 +65,7 @@ import GenomeMain from '@/Pages/Components/GenomeMain'
 import Genome from '@/Pages/Components/Genome'
 import WorkExperience from "@/Pages/Components/WorkExperience";
 import Personality from "@/Pages/Components/Personality";
+import Compare from "@/Pages/Components/Compare";
 
 export default {
     components: {
@@ -66,7 +73,8 @@ export default {
         WorkExperience,
         GenomeUser,
         GenomeMain,
-        Genome
+        Genome,
+        Compare
     },
     props: {
         user: Object
