@@ -50,6 +50,20 @@
             z-index: 1;
             border-top: 1px solid rgba(255,255,255,.12);
         }
+
+        .torre-shadow {
+            -webkit-box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
+            box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
+        }
+        .background-image {
+            background-image: url(/imgs/bk.jpg);
+            background-size: cover;
+            background-position: center center;
+            height: calc(100vh - 54px);
+        }
+        .ps {
+            height: 80vh;
+        }
     </style>
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>

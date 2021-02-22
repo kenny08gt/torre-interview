@@ -9,19 +9,15 @@
            <form v-on:submit.prevent="searchJob">
             <input type="text" class="" id="" name="" v-model="jobSearch" placeholder="Search">
            </form>
-           <a :href=" route('genome', 'torrenegra')" class="mt-3 hover:underline pt-3">Take a look at the genome</a>
+           <br>
+           <br>
+           <a :href=" route('genome', 'torrenegra')" class="mt-3 hover:underline pt-3">Take a look at the genome ></a>
        </div>
     </div>
 
 <!--    <BackgroundProfile :user="user"></BackgroundProfile>-->
 </template>
 <style>
-.background-image {
-    background-image: url(/imgs/bk.jpg);
-    background-size: cover;
-    background-position: center center;
-    height: calc(100vh - 54px);
-}
 input {
     background-color: transparent !important;
     border: none;
@@ -41,11 +37,6 @@ input:focus, input:active {
     background-position: center center;
     height: 446px;
 }
-.torre-shadow {
-    -webkit-box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
-    box-shadow: -2px -2px 6px #383b40, 6px 6px 6px rgb(0 0 0 / 24%);
-}
-
 </style>
 <style scoped>
 .job-wrapper {
